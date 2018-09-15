@@ -23,6 +23,7 @@ public class FamilyRepository {
 	@Transactional
 	public Family addFamily(Family family) {
 	    // TODO Auto-generated method stub
+
 	    HibernateUtil.initManager();
 	    HibernateUtil.getEntityManager().clear();
 	    HibernateUtil.getEntityManager().getTransaction().begin();

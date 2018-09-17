@@ -69,7 +69,7 @@ public class RESTController {
 		return familyRepository.getFamilyByNameChild(firstName);
 	}
 	
-	@GetMapping("/getFamilyBySecond	NameChild/{secondName}")
+	@GetMapping("/getFamilyBySecondNameChild/{secondName}")
 	public @ResponseBody List<Family> getFamilyBySecondNameChild(@PathVariable("secondName") String secondName){
 		return familyRepository.getFamilyBySecondNameChild(secondName);
 	}

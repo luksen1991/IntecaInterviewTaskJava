@@ -55,6 +55,9 @@ public class FamilyRepositoryTest {
 
     @Test
     public void findAllFamilies() {
+        int expectedValue = 18;
+        List<Family> familyList = familyRepository.findAllFamilies();
+        assertEquals(expectedValue,familyList.size());
     }
 
     @Test

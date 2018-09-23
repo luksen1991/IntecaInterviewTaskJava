@@ -3,12 +3,15 @@ package com.example.Family.Repository;
 import com.example.Family.Entities.Child;
 import com.example.Family.Entities.Family;
 import com.example.Family.Entities.Father;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,28 +58,71 @@ public class FamilyRepositoryTest {
 
     @Test
     public void findAllFamilies() {
-        int expectedValue = 18;
+        int expectedValue = 4;
         List<Family> familyList = familyRepository.findAllFamilies();
         assertEquals(expectedValue,familyList.size());
     }
 
     @Test
-    public void getFamilyByBirthDateChild() {
+    public void getFamilyByBirthDateChild() throws ParseException {
+        int expectedValue=4;
+        String date = "22-09-2018";
+        List<Family> familyList = familyRepository.getFamilyByBirthDateChild(date);
+        assertEquals(expectedValue,familyList.size());
     }
 
     @Test
     public void getFamilyByPeselChild() {
+        int expectedValue=2;
+        String pesel = "12345678910";
+        List<Family> familyList = familyRepository.getFamilyByPeselChild(pesel);
+        assertEquals(expectedValue,familyList.size());
     }
 
     @Test
-    public void getFamilyBySexChild() {
+    public void getFamilyBySexChildMale() {
+        int expectedValue = 4;
+        String sex = "male";
+        List<Family> familyList = familyRepository.getFamilyBySexChild(sex);
+        assertEquals(expectedValue,familyList.size());
+    }
+
+    @Test
+    public void getFamilyBySexChildFemale() {
+        int expectedValue = 0;
+        String sex = "female";
+        List<Family> familyList = familyRepository.getFamilyBySexChild(sex);
+        assertEquals(expectedValue,familyList.size());
     }
 
     @Test
     public void getFamilyByNameChild() {
+        int expectedValue = 4;
+        String firstName = "Jan";
+        List<Family> familyList = familyRepository.getFamilyByNameChild(firstName);
+        assertEquals(expectedValue,familyList.size());
+    }
+    @Test
+    public void getFamilyByNameChildWhichNotExist() {
+        int expectedValue = 0;
+        String firstName = "Tomasz";
+        List<Family> familyList = familyRepository.getFamilyByNameChild(firstName);
+        assertEquals(expectedValue,familyList.size());
     }
 
     @Test
     public void getFamilyBySecondNameChild() {
+        int expectedValue = 4;
+        String secondName = "Gwardian";
+        List<Family> familyList = familyRepository.getFamilyBySecondNameChild(secondName);
+        assertEquals(expectedValue,familyList.size());
+    }
+
+    @Test
+    public void getFamilyBySecondNameChildWhichNotExist() {
+        int expectedValue = 0;
+        String secondName = "Gward";
+        List<Family> familyList = familyRepository.getFamilyByNameChild(secondName);
+        assertEquals(expectedValue,familyList.size());
     }
 }

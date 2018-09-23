@@ -20,7 +20,7 @@ public class FatherRepositoryTest {
 
     @Test
     public void findAllFathers(){
-        int expectedValue = 12;
+        int expectedValue = 1;
         List<Father> fatherList = fatherRepository.findAllFathers();
         assertEquals(expectedValue,fatherList.size());
 

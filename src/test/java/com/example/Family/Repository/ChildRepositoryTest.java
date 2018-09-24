@@ -21,7 +21,7 @@ public class ChildRepositoryTest {
 
     @Test
     public void testFindAllChildren(){
-        int expectedValue =1;
+        int expectedValue =4;
         List<Child> listChild = childRepository.findAllChild();
         System.out.println("Val: "+listChild.size());
         assertEquals(expectedValue,listChild.size());
